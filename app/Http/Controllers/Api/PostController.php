@@ -38,22 +38,24 @@ class PostController extends Controller
     //post random homepage
     public function random()
     {
-        $posts = Post::with(['user', 'category', 'tags'])->limit(9)->inRamdomOrder()->get();
+        $sql = Post::with(['user', 'category', 'tags'])->limit(9)->inRandomOrder();
+        $posts = $sql->get();
 
         return response()->json([
-            'success' => true,
-            'result' =>$posts
+            // 'sql'       => $sql->toSql(), // solo per debugging
+            'success'   => true,
+            'result'    => $posts,
         ]);
     }
 
     public function show(String $slug)
     {
-            $post = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->first('slug', 'title', 'content');
+            $post = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->first();
 
             if($post) {
                 return response()->json([
                     'success' => true,
-                    'result' =>$posts
+                    'result' =>$post
                 ]);
             } else {
                 return response()->json([

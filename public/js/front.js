@@ -5264,9 +5264,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/posts/random').then(function (risposta) {
-      if (risposta.data.success) {
-        _this.posts = risposta.data.result;
+    axios.get('/api/posts/random').then(function (res) {
+      if (res.data.success) {
+        _this.posts = res.data.result;
       }
     });
   }
@@ -5636,27 +5636,27 @@ var render = function render() {
 
   return _c("section", [_c("div", {
     staticClass: "row g-3 mt-4"
-  }, [_vm._l(_vm.posts, function (post) {
+  }, _vm._l(_vm.posts, function (post) {
     return _c("div", {
       key: post.slug,
-      staticClass: "col-sm-6 col-md-4 p-4"
-    });
-  }), _vm._v(" "), _c("router-link", {
-    attrs: {
-      to: {
-        name: "show",
-        params: {
-          slug: _vm.post.slug
+      staticClass: "col-sm-6 col-md-4"
+    }, [_c("router-link", {
+      attrs: {
+        to: {
+          name: "show",
+          params: {
+            slug: post.slug
+          }
         }
       }
-    }
-  }, [_c("img", {
-    staticClass: "img-fluid",
-    attrs: {
-      src: _vm.post.image,
-      alt: _vm.post.title
-    }
-  })])], 2)]);
+    }, [_c("img", {
+      staticClass: "img-fluid",
+      attrs: {
+        src: post.image,
+        alt: post.title
+      }
+    })])], 1);
+  }), 0)]);
 };
 
 var staticRenderFns = [];
@@ -45306,8 +45306,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\glogh\Downloads\laravel-api-master\resources\js\front.js */"./resources/js/front.js");
-module.exports = __webpack_require__(/*! C:\Users\glogh\Downloads\laravel-api-master\resources\sass\back.scss */"./resources/sass/back.scss");
+__webpack_require__(/*! C:\Users\glogh\Music\php\laravel\laravel-boolpress\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\glogh\Music\php\laravel\laravel-boolpress\resources\sass\back.scss */"./resources/sass/back.scss");
 
 
 /***/ })

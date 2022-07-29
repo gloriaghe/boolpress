@@ -64,5 +64,5 @@ Vue.use(VueRouter); //diciamo a vue di usare il pluggin vue router
 const app = new Vue({
     el: '#root',
     render: h => h(App),
-    router:router, //diciamo avue di inizializzare la nostra app usando il router
+    router, //diciamo avue di inizializzare la nostra app usando il router
 });

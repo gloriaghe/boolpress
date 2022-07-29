@@ -39,7 +39,7 @@ created(){
     .then(risposta =>
     {
         if(risposta.data.success){
-this.post = risposta.data.result
+            this.post = risposta.data.result
         } else{
             this.is404 = true;
         }
