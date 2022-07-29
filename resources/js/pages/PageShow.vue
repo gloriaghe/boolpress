@@ -1,17 +1,20 @@
 <template>
 <Page404 v-if='is404'/>
-<section v-else-if="post">
+<section v-else-if="post"><div class="card mb-3">
+  <img :src="post.image"  :alt="post.title">
+  <div class="card-body">
+    <h2 class="card-title text-uppercase">{{post.title}}</h2>
+    <p class="card-text">{{post.content}}</p>
+    <div class="text-end">Categoria: {{post.category.name}}</div>
+     <div class="tags text-end">
+        <strong>TAGS: </strong>
+            <span v-for="tag in post.tags" :key="tag.id" class="tag">
+                {{ tag.name }}
+            </span>
+        </div>
+  </div>
+</div>
 
-    <h1>{{post.title}}</h1>
-    <h2>Scritto da : {{post.user.name}}</h2>
-    <h3>Categoria: {{post.category.name}}</h3>
-    <div class="tags">
-        <span v-for="tag in post.tags" :key="tag.id" class="tag">
-        {{tag.name}}
-        </span>
-    </div>
-    <img :src="post.image" :alt="post.title">
-    <p>{{post.content}}</p>
 </section>
 
 </template>
@@ -50,7 +53,21 @@ created(){
 </script>
 
 <style lang="scss" >
+section{
+    height: 100%;
 
+    .card{
+background-color: #C4FFF9 ;
+border: none;
+        img{
+            margin: 30px auto;
+            width: 70%;
+            border-radius: 20px;
+        }
+    }
+
+
+}
 
 
 

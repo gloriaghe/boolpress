@@ -1,21 +1,21 @@
 <template>
     <div id="nav">
-            <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li v-for="(navItem, index) in navItems" :key="index"  class="nav-item">
-                <!-- per passare la rotta usiamo questo(le classi le decidiamo noi normalmente) -->
-                <router-link :to="{ name: navItem.routeName }" class="nav-link active">{{ navItem.label }}</router-link>
-            </li>
-
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">BOOLPRESS</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li v-for="(navItem, index) in navItems" :key="index"  class="nav-item">
+                            <!-- per passare la rotta usiamo questo(le classi le decidiamo noi normalmente) -->
+                            <router-link :to="{ name: navItem.routeName }" class="nav-link text-uppercase">{{ navItem.label }}</router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
-    </div>
-    </nav>
+        </nav>
     </div>
 </template>
 
@@ -57,6 +57,11 @@ export default {
 
         height: 60px;
         background-color: #07BEB8;
+
+        a{
+            color: white;
+            font-weight: bolder;
+        }
     }
 }
 

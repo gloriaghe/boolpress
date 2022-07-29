@@ -52,11 +52,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import 'bootstrap/scss/bootstrap';
 
 main {
     background-color: #C4FFF9;
+    width: 100%;
     min-height: 100vh;
 
     .container {

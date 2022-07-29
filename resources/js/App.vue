@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="containerTotal">
     <NavBar/>
 
     <div class="container">
@@ -25,4 +25,15 @@ export default {
 <style lang="scss" >
 @import 'bootstrap/scss/bootstrap';
 
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #containerTotal{
+    background-color: #C4FFF9;
+        width: 100%;
+        min-height: 100vh;
+    }
 </style>
