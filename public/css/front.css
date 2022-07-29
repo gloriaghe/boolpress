@@ -1,0 +1,31 @@
+#dashbord {
+  height: 60px;
+  background-color: #07BEB8;
+}
+
+#dashbord.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+#dashbord.position-ref {
+  position: relative;
+}
+
+#dashbord.position-ref .top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+#dashbord.position-ref .top-right.links > a {
+  color: #ffffff;
+  padding: 0 25px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
