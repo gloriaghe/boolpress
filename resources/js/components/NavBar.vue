@@ -59,7 +59,7 @@ export default {
         background-color: #07BEB8;
 
         a{
-            color: white;
+            color: #006c69;
             font-weight: bolder;
         }
     }

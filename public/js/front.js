@@ -11000,7 +11000,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#nav nav[data-v-5dd24bca] {\n  height: 60px;\n  background-color: #07BEB8;\n}\n#nav nav a[data-v-5dd24bca] {\n  color: white;\n  font-weight: bolder;\n}", ""]);
+exports.push([module.i, "#nav nav[data-v-5dd24bca] {\n  height: 60px;\n  background-color: #07BEB8;\n}\n#nav nav a[data-v-5dd24bca] {\n  color: #006c69;\n  font-weight: bolder;\n}", ""]);
 
 // exports
 
