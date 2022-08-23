@@ -38,7 +38,7 @@
                 {{ $message }}
             </div>
         @enderror
-        <img class="preview" src="{{asset('storage/' . $post->image)}}">
+        <img id="preview" class="img-fluid" src="{{asset('storage/' . $post->image)}}">
 
     </div>
 

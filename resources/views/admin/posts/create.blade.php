@@ -34,6 +34,8 @@
                 {{ $message }}
             </div>
         @enderror
+        <img id="preview" class="img-fluid" src="">
+
     </div>
 
     <div class="mb-3">

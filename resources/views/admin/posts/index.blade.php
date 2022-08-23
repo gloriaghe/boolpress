@@ -48,12 +48,14 @@
                         <a href="{{ route('admin.posts.edit', ['post' => $post]) }}" class="btn btn-warning">Edit</a>
                     </td>
                     <td>
-                        <form action="{{ route('admin.posts.destroy', ['post' => $post]) }}" method="post">
+                        <button class="btn btn-danger js-delete">Delete</button>
+
+                        {{-- <form action="{{ route('admin.posts.destroy', ['post' => $post]) }}" method="post">
                             @csrf
                             @method('DELETE')
 
                             <button class="btn btn-danger"  type="submit">Delete</button>
-                        </form>
+                        </form> --}}
                     </td>
                     @endif
                 </tr>
@@ -63,7 +65,7 @@
 
     {{ $posts->links() }}
 
-    {{-- <section class="overlay d-none">
+    <section class="overlay d-none">
         <form class="popup" data-action="{{ route('admin.posts.destroy', ['post' => '*****']) }}" method="post">
             @csrf
             @method('DELETE')
@@ -72,5 +74,5 @@
             <button type="submit" class="btn btn-warning js-yes">Yes</button>
             <button type="button" class="btn btn-danger js-no">No</button>
         </form>
-    </section> --}}
+    </section>
 @endsection
