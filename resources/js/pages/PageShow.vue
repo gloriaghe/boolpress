@@ -1,7 +1,7 @@
 <template>
 <Page404 v-if='is404'/>
 <section v-else-if="post"><div class="card mb-3">
-  <img :src="post.image"  :alt="post.title">
+  <img v-if="post.image" :src="post.image"  :alt="post.title">
   <div class="card-body">
     <h2 class="card-title text-uppercase">{{post.title}}</h2>
     <p class="card-text">{{post.content}}</p>

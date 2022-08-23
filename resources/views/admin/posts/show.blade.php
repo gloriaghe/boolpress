@@ -5,8 +5,9 @@
 <h1>{{$post['title']}}</h1>
 <span>Scritto da: {{$post->user->name}}</span>
 <h2>{{$post['slug']}}</h2>
-<img src="{{$post['image']}}" alt="{{$post['title']}}">
-<div>{{$post['content']}}</div>
+    @if($post['image'])
+        <img src="{{  asset ('storage/' . $post['image'] ) }}" alt="{{$post['title']}}">
+    @endif<div>{{$post['content']}}</div>
 <br>
 <div>{{$post['excerpt']}}</div>
 <br>

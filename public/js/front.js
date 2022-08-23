@@ -5691,12 +5691,12 @@ var render = function render() {
 
   return _vm.is404 ? _c("Page404") : _vm.post ? _c("section", [_c("div", {
     staticClass: "card mb-3"
-  }, [_c("img", {
+  }, [_vm.post.image ? _c("img", {
     attrs: {
       src: _vm.post.image,
       alt: _vm.post.title
     }
-  }), _vm._v(" "), _c("div", {
+  }) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "card-body"
   }, [_c("h2", {
     staticClass: "card-title text-uppercase"

@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
+    private function fixImageUrl($imgPath){
+        return  $imgPath ? asset('/storage/' . $imgPath) : null;
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,6 +33,11 @@ class PostController extends Controller
         //con il with richiamo le funzioni del model Post per richiamare user, category e tags e avere tutto nella risposta
         $posts = Post::with(['user', 'category', 'tags'])->paginate($perPage);
 
+        foreach ($posts as $post) {
+            $post->image = $this->fixImageUrl($post->image);
+
+        }
+
         return response()->json([
             'success' => true,
             'response' =>$posts
@@ -38,8 +47,13 @@ class PostController extends Controller
     //post random homepage
     public function random()
     {
-        $sql = Post::with(['user', 'category', 'tags'])->limit(9)->inRandomOrder();
+        $sql = Post::with(['user', 'category', 'tags'])->whereNotNull('image')->limit(9)->inRandomOrder();
         $posts = $sql->get();
+
+        foreach ($posts as $post) {
+            $post->image = $this->fixImageUrl($post->image);
+
+        }
 
         return response()->json([
             // 'sql'       => $sql->toSql(), // solo per debugging
@@ -53,10 +67,15 @@ class PostController extends Controller
             $post = Post::with(['user', 'category', 'tags'])->where('slug', $slug)->first();
 
             if($post) {
-                return response()->json([
-                    'success' => true,
-                    'result' =>$post
-                ]);
+
+                    $post->image = $this->fixImageUrl($post->image);
+                    return response()->json([
+                        'success' => true,
+                        'result' =>$post
+                    ]);
+
+
+                // $post->image = $post->image ? '/storage/' . $post->image : null;
             } else {
                 return response()->json([
                     'success' => false,

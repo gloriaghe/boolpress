@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -59,12 +60,24 @@ class PostController extends Controller
             'category_id'  => 'required|integer|exists:categories,id',
             'tags'      => 'nullable|array',
             'tags.*'    => 'integer|exists:tags,id',
-            'image'     => 'required_without:content|nullable|url',
+            'image'     => 'required_without:content|nullable|file|image|max:1024',
             'content'   => 'required_without:image|nullable|string|max:5000',
             'excerpt'   => 'nullable|string|max:200',
         ]);
-//con il + aggiungiamo all'array l'Id dell'utente
-        $data = $request->all() + [
+
+        $form_data= $request->all();
+        //salviamo l'immagine in public
+        if(key_exists('image', $form_data)){
+
+            $img_path = Storage::put('uploads', $form_data['image']);
+
+            //aggiorniamo il valore della chiave image con il nome dell'img creata
+            $form_data['image'] = $img_path;
+        }
+
+
+    //con il + aggiungiamo all'array l'Id dell'utente
+        $data = $form_data + [
             'user_id' => Auth::id(),
         ];
 
@@ -139,12 +152,24 @@ class PostController extends Controller
             'category_id'  => 'required|integer|exists:categories,id',
             'tags'      => 'nullable|array',
             'tags.*'    => 'integer|exists:tags,id',
-            'image'     => 'required_without:content|nullable|url',
+            'image'     => 'required_without:content|nullable|file|image|max:1024',
             'content'   => 'required_without:image|nullable|string|max:5000',
             'excerpt'   => 'nullable|string|max:200',
         ]);
 
         $data = $request->all();
+        if(key_exists('image', $data)){
+            //elimina il file precedente se esiste
+            if($post->image){
+                Storage::delete($post->image);
+            }
+
+            //carica nuovo file
+            $img_path = Storage::put('uploads', $data['image']);
+
+            //aggiorna l'array $data con il percorso del file nuovo
+            $data['image'] = $img_path;
+        }
 
         $post->update($data);
         // $post = Post::create($data);
@@ -170,5 +195,15 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('admin.posts.index')->with('deleted', "Il post {$post->title} è stato eliminato");
+    }
+
+    public function getSlug(Request $request){
+        $title = $request->query('title');
+        $slug = Post::getSlug($title);
+
+        return response()->json([
+            'success'   => true,
+            'response'  => $slug
+        ]);
     }
 }

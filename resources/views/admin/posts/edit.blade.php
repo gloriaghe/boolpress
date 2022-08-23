@@ -5,7 +5,7 @@
 @section('mainContent')
 <h1>Modifica il post:</h1>
 
-<form action="{{route('admin.posts.update', ['post' => $post])}}" method="post" novalidate>
+<form action="{{route('admin.posts.update', ['post' => $post])}}" method="post"  enctype="multipart/form-data" novalidate>
     {{-- con novalidate non abbiamo la validazione front-end --}}
     @method('PUT')
 
@@ -32,12 +32,14 @@
 
     <div class="mb-3">
         <label class="form-label" for="image">Image</label>
-        <input class="form-control @error('image') is-invalid @enderror" type="url" name="image" id="image" value="{{ old('image', $post->image ) }}">
+        <input class="form-control @error('image') is-invalid @enderror" type="file" accept="image/*" name="image" id="image" value="{{ old('image', $post->image ) }}">
         @error('image')
             <div class="invalid-feedback">
                 {{ $message }}
             </div>
         @enderror
+        <img class="preview" src="{{asset('storage/' . $post->image)}}">
+
     </div>
 
     <div class="mb-3">

@@ -3,7 +3,7 @@
 @section('mainContent')
 <h1>Crea un nuovo post:</h1>
 
-<form action="{{route('admin.posts.store')}}" method="post" novalidate>
+<form action="{{route('admin.posts.store')}}" method="post"  enctype="multipart/form-data" novalidate>
     {{-- con novalidate non abbiamo la validazione front-end --}}
     @csrf
     <div class="mb-3">
@@ -28,7 +28,7 @@
 
     <div class="mb-3">
         <label class="form-label" for="image">Image</label>
-        <input class="form-control @error('image') is-invalid @enderror" type="url" name="image" id="image" value="{{ old('image') }}">
+        <input class="form-control @error('image') is-invalid @enderror" type="file" accept="image/*" name="image" id="image" value="{{ old('image') }}">
         @error('image')
             <div class="invalid-feedback">
                 {{ $message }}
