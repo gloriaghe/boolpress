@@ -1,6 +1,6 @@
 <template>
-<div>
-    <h1>Contattaci</h1>
+<section>
+    <h1>CONTATTACI</h1>
     <form @submit.prevent="submitMessage" novalidate>
         <div v-if="successMessage" class="alert alert-success" role="alert">
             {{ successMessage }}
@@ -53,9 +53,9 @@
                 </ul>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary" :disabled="sending">{{ sending ? 'Sto inviando...' : 'Invia il messaggio' }}</button>
+        <button type="submit" class="btn " :disabled="sending">{{ sending ? 'Sto inviando...' : 'Invia il messaggio' }}</button>
     </form>
-</div>
+</section>
 
 </template>
 
@@ -110,7 +110,27 @@ export default {
 
 <style lang="scss" >
 
+section{
+    h1{
+        color: #3dccc7;
+        margin: 20px auto;
+        font-weight: bolder;
+    }
+    .form-check-input:checked {
+        background-color: #3dccc7;
+        border-color: #3dccc7;
+    }
+    .btn{
+        margin-top: 20px;
+        background-color: #3dccc7;
+        color: white;
 
+        &:hover{
+            background-color: #34bcb8;
+            color: white;
+        }
+    }
+}
 
 
 </style>
